@@ -1,0 +1,35 @@
+/*
+* Variables
+*/
+:root {
+    --main-background-color: #1b191c;
+    --clock-background-color: #1b191c;
+    --letter-background-color: #1b191c;
+    --letter-color: #706774;
+    --letter-active-color: #efe0f7;
+}
+
+/*
+* General
+*/
+
+body {
+    background-color: var(--main-background-color);
+}
+
+/*
+* Clock
+*/
+#clock {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    background-color: var(--clock-background-color);
+}
+
+#clock .letter {
+    color: var(--letter-color);
+}
+
+#clock .active {
+    color: var(--letter-active-color);
+}
