@@ -1,4 +1,5 @@
 import {clockLetters} from './letters.js';
+import {getTime} from './time.js';
 
 const renderLetters = (letters) => {
     const clock = document.getElementById("clock");
