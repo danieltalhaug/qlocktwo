@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200&display=swap');
 
 /*
 * Variables
 */
 :root {
-    --main-background-color: #151316;
-    --clock-background-color: #151316;
-    --letter-background-color: #1b191c;
+    --main-background-color: #1f1e2e;
+    --clock-background-color: #1f1e2e;
+    --letter-background-color: #28293d;
     --letter-border-color: #1b191c;
     --letter-border-radius: 4px;
-    --letter-color: #706774;
-    --letter-active-color: #efe0f7;
-    --letter-font-family: 'Nanum Gothic', sans-serif;
+    --letter-color: #5e6086;
+    --letter-active-color: #eaebff;
+    --letter-font-family: 'Exo', sans-serif;
 }
 
 /*
