@@ -4,14 +4,25 @@
 * Variables
 */
 :root {
-    --main-background-color: #1f1e2e;
+    --body-background-color: #1f1e2e;
+
+    /* clock */
+    --clock-columns: 11;
+    --clock-gap: 6px;
     --clock-background-color: #1f1e2e;
+
+    /* letter */
     --letter-background-color: #28293d;
     --letter-border-color: #1b191c;
+    --letter-border-size: 0px;
     --letter-border-radius: 4px;
     --letter-color: #5e6086;
     --letter-active-color: #eaebff;
     --letter-font-family: 'Exo', sans-serif;
+    --letter-font-size: 2vw;
+
+    /* Modifiers */
+    --letter-font-size-modifier: 1;
 }
 
 /*
@@ -19,7 +30,7 @@
 */
 
 body {
-    background-color: var(--main-background-color);
+    background-color: var(--body-background-color);
     font-size: 16px;
     font-family: var(--letter-font-family);
 }
@@ -27,23 +38,27 @@ body {
 /*
 * Clock
 */
-#clock {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    gap: 12px;
-    margin: 0 auto;
-    background-color: var(--clock-background-color);
-    max-width: 100vh;
-    padding-top: 4vh;
-}
 
-#clock .letter {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5em;
+    height: 100vh;
+}
+
+#clock {
+    display: grid;
+    grid-template-columns: repeat(var(--clock-columns), 1fr);
+    grid-gap: var(--clock-gap);
+    width: 100%;
+    max-width: 100vh;
+    background-color: var(--clock-background-color);
+}
+
+#clock .letter {
+    font-size: calc(var(--letter-font-size) * var(--letter-font-size-modifier));
     color: var(--letter-color);
-    border: 1px solid var(--letter-border-color);
+    border: var(--letter-border-size) solid var(--letter-border-color);
     border-radius: var(--letter-border-radius);
     background-color: var(--letter-background-color);
     aspect-ratio: 1/1;
@@ -51,4 +66,11 @@ body {
 
 #clock .active {
     color: var(--letter-active-color);
+}
+
+#clock .letter span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
