@@ -10,6 +10,7 @@
     --clock-columns: 11;
     --clock-gap: 6px;
     --clock-background-color: #1f1e2e;
+    --clock-margin: 24px;
 
     /* letter */
     --letter-background-color: #28293d;
@@ -53,6 +54,7 @@ main {
     width: 100%;
     max-width: 100vh;
     background-color: var(--clock-background-color);
+    margin: var(--clock-margin);
 }
 
 #clock .letter {
