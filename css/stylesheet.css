@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200&display=swap');
+
+/*
+* Variables
+*/
+:root {
+    --body-background-color: #1f1e2e;
+
+    /* clock */
+    --clock-columns: 11;
+    --clock-gap: 6px;
+    --clock-background-color: #1f1e2e;
+    --clock-margin: 24px;
+
+    /* letter */
+    --letter-background-color: #28293d;
+    --letter-border-color: #1b191c;
+    --letter-border-size: 0px;
+    --letter-border-radius: 4px;
+    --letter-color: #5e6086;
+    --letter-active-color: #eaebff;
+    --letter-font-family: 'Exo', sans-serif;
+    --letter-font-size: 2vw;
+
+    /* Modifiers */
+    --letter-font-size-modifier: 1;
+}
+
+/*
+* General
+*/
+
+body {
+    background-color: var(--body-background-color);
+    font-size: 16px;
+    font-family: var(--letter-font-family);
+}
+
+/*
+* Clock
+*/
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#clock {
+    display: grid;
+    grid-template-columns: repeat(var(--clock-columns), 1fr);
+    grid-gap: var(--clock-gap);
+    width: 100%;
+    max-width: 100vh;
+    background-color: var(--clock-background-color);
+    margin: var(--clock-margin);
+}
+
+#clock .letter {
+    font-size: calc(var(--letter-font-size) * var(--letter-font-size-modifier));
+    color: var(--letter-color);
+    border: var(--letter-border-size) solid var(--letter-border-color);
+    border-radius: var(--letter-border-radius);
+    background-color: var(--letter-background-color);
+    aspect-ratio: 1/1;
+}
+
+#clock .active {
+    color: var(--letter-active-color);
+}
+
+#clock .letter span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
