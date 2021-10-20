@@ -1,5 +1,6 @@
 export const renderClockLetters = (letters) => {
     const clock = document.getElementById("clock");
+    clock.innerHTML = '';
 
     letters.forEach(letter => {
         const letterContainer = document.createElement('div');

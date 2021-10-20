@@ -1,8 +1,9 @@
 import { clockLetters } from './letters.js';
 import { getTime } from './time.js';
-import { renderClockLetters } from './dom-manipulations.js'
+import { renderClockLetters } from './dom-manipulations.js';
+import { session } from './storage.js';
 
-const init = () => {
+const renderClock = () => {
     const letters = clockLetters();
     const { hours, minutes } = getTime();
 
@@ -42,4 +43,20 @@ const init = () => {
     renderClockLetters(letters);
 };
 
-init();
+const startClock = () =>{
+    renderClock();
+
+    setInterval(() => {
+        const { minutes } = getTime();
+        const lastRenderAt = Number(session.get('renderedClockAtMinute'));
+    
+        if (minutes !== lastRenderAt) {
+            session.set('renderedClockAtMinute', minutes);
+            console.log('updating');
+            renderClock();
+        }
+    }, 1000);
+};
+
+session.set('renderedClockAtMinute', getTime().minutes);
+startClock();
