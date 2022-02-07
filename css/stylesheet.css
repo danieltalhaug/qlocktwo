@@ -6,6 +6,24 @@
 :root {
     --body-background-color: #1f1e2e;
 
+    /* spacing */
+    --8pt-4: 4px;
+    --8pt-8: 8px;
+    --8pt-12: 12px;
+    --8pt-16: 16px;
+    --8pt-24: 24px;
+    --8pt-32: 32px;
+    --8pt-40: 40px;
+    --8pt-48: 48px;
+    --8pt-56: 56px;
+    --8pt-64: 64px;
+
+    /* ui */
+    --color-primary: #282125;
+    --color-secondary: #635460;
+    --color-light: #C2B7C0;
+    --transition: 200ms;
+
     /* clock */
     --clock-columns: 11;
     --clock-gap: 6px;
