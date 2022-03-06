@@ -186,7 +186,7 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    height: 48px;
+    height: var(--8pt-48);
     border-radius: var(--8pt-8) 0 0 var(--8pt-8);
     cursor: pointer;
 }
@@ -201,9 +201,9 @@ main {
     content: '';
     position: relative;
     bottom: -30px;
-    height: 12px;
-    width: 12px;
-    background: radial-gradient(circle at bottom left,rgba(0,0,0,0) calc(72% - 1px ), #fff 12px);
+    height: var(--8pt-12);
+    width: var(--8pt-12);
+    background: radial-gradient(circle at bottom left,rgba(0,0,0,0) calc(72% - 1px ), #fff var(--8pt-12));
 }
 
 .action-bar .activator .btn {
