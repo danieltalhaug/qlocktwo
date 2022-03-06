@@ -1,7 +1,9 @@
 import { clockLetters } from './letters.js';
 import { getTime } from './time.js';
-import { renderClockLetters } from './dom-manipulations.js';
+import { renderClockLetters, toggleElementClass } from './dom-manipulations.js';
 import { session } from './storage.js';
+
+const actionsActivator = document.querySelector('.actions-activator');
 
 const renderClock = () => {
     const letters = clockLetters();
@@ -57,6 +59,11 @@ const startClock = () =>{
         }
     }, 1000);
 };
+
+actionsActivator.addEventListener("click", () => {
+    const actionBar = document.querySelector('.action-bar');
+    toggleElementClass(actionBar, 'visible');
+});
 
 session.set('renderedClockAtMinute', getTime().minutes);
 startClock();

@@ -17,12 +17,18 @@
     --8pt-48: 48px;
     --8pt-56: 56px;
     --8pt-64: 64px;
+    --8pt-74: 72px;
+    --8pt-80: 80px;
 
     /* ui */
     --color-primary: #282125;
     --color-secondary: #635460;
     --color-light: #C2B7C0;
     --transition: 200ms;
+
+    /* animation */
+    --duration: 350ms;
+    --timing-function: ease-in-out;
 
     /* clock */
     --clock-columns: 11;
@@ -42,6 +48,24 @@
 
     /* Modifiers */
     --letter-font-size-modifier: 1;
+}
+
+/*
+* Keyframes
+*/
+
+@keyframes showActionbar {
+    0% { right: -84px; }
+    25% { right: -94px; }
+    75% { right: var(--8pt-32); }
+    100% { right: var(--8pt-16); }
+}
+
+@keyframes hideActionbar {
+    0% { right: var(--8pt-16); }
+    25% { right: var(--8pt-32); }
+    75% { right: -94px; }
+    100% { right: -84px; }
 }
 
 /*
@@ -135,6 +159,12 @@ main {
     width: 100%;
     position: fixed;
     bottom: var(--8pt-16);
+    animation: hideActionbar var(--duration) 1;
+    right: -84px;
+}
+
+.action-bar.visible {
+    animation: showActionbar var(--duration) 1;
     right: var(--8pt-16);
 }
 

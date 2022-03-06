@@ -17,3 +17,7 @@ export const renderClockLetters = (letters) => {
         clock.appendChild(letterContainer);
     });
 };
+
+export const toggleElementClass = (el, className) => {
+    el.classList.toggle(className);
+}
