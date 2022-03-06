@@ -190,10 +190,10 @@ main {
     border-radius: var(--8pt-8) 0 0 var(--8pt-8);
     cursor: pointer;
 }
-.action-bar .activator .btn {
+.action-bar .activator .btn i {
     transition: var(--duration);
 }
-.action-bar .activator .btn.visible {
+.action-bar .activator .btn.visible i {
     transform: rotate(180deg);
 }
 
