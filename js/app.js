@@ -3,11 +3,21 @@ import { getTime } from './time.js';
 import { renderClockLetters, toggleElementClass } from './dom-manipulations.js';
 import { session } from './storage.js';
 
+let interval;
 const actionsActivator = document.querySelector('.actions-activator');
+const startButton = document.querySelector('.start');
+const pauseButton = document.querySelector('.pause');
 
-const renderClock = () => {
+const renderClock = (isClockRunning = false) => {
     const letters = clockLetters();
     const { hours, minutes } = getTime();
+
+    // Render empty clock and return when passed false or the parameter is absent
+    if (!isClockRunning) {
+        renderClockLetters(letters);
+
+        return;
+    }
 
     letters.forEach(letter => {
         // Show obligatory letters
@@ -45,19 +55,27 @@ const renderClock = () => {
     renderClockLetters(letters);
 };
 
-const startClock = () =>{
-    renderClock();
+const handleClock = (clockInstruction) =>{
 
-    setInterval(() => {
-        const { minutes } = getTime();
-        const lastRenderAt = Number(session.get('renderedClockAtMinute'));
-    
-        if (minutes !== lastRenderAt) {
-            session.set('renderedClockAtMinute', minutes);
-            console.log('updating');
-            renderClock();
-        }
-    }, 1000);
+    if (clockInstruction === "start") {
+        renderClock(true);
+
+        interval = setInterval(() => {
+            const { minutes } = getTime();
+            const lastRenderAt = Number(session.get('renderedClockAtMinute'));
+        
+            if (minutes !== lastRenderAt) {
+                session.set('renderedClockAtMinute', minutes);
+                console.log('updating');
+                renderClock(true);
+            }
+        }, 1000);
+    }
+
+    if (clockInstruction === "pause") {
+        renderClock();
+        clearInterval(interval);
+    }
 };
 
 actionsActivator.addEventListener("click", () => {
@@ -66,5 +84,17 @@ actionsActivator.addEventListener("click", () => {
     toggleElementClass(actionBar, 'visible');
 });
 
+startButton.addEventListener("click", () => {
+    handleClock("start");
+    toggleElementClass(startButton, 'hidden');
+    toggleElementClass(pauseButton, 'hidden');
+});
+
+pauseButton.addEventListener("click", () => {
+    handleClock("pause");
+    toggleElementClass(pauseButton, 'hidden');
+    toggleElementClass(startButton, 'hidden');
+});
+
 session.set('renderedClockAtMinute', getTime().minutes);
-startClock();
+renderClock();
