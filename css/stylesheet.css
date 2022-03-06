@@ -177,6 +177,10 @@ main {
     gap: var(--8pt-8);
 }
 
+.action-bar .content .btn.hidden {
+    display: none;
+}
+
 .action-bar .activator {
     display: flex;
     justify-content: center;
@@ -185,6 +189,12 @@ main {
     height: 48px;
     border-radius: var(--8pt-8) 0 0 var(--8pt-8);
     cursor: pointer;
+}
+.action-bar .activator .btn {
+    transition: var(--duration);
+}
+.action-bar .activator .btn.visible {
+    transform: rotate(180deg);
 }
 
 .action-bar .activator::after {

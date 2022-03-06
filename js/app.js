@@ -62,6 +62,7 @@ const startClock = () =>{
 
 actionsActivator.addEventListener("click", () => {
     const actionBar = document.querySelector('.action-bar');
+    toggleElementClass(actionsActivator, 'visible');
     toggleElementClass(actionBar, 'visible');
 });
 
