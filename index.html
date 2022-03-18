@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/stylesheet.css">
+        <link rel="stylesheet" href="css/zwicon.css" type="text/css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -20,6 +21,25 @@
         <main>
             <div id="clock" />
         </main>
+        <aside>
+            <section class="action-bar">
+                <div class="activator">
+                    <button class="btn actions-activator">
+                        <i class="zwicon-chevron-left"></i>
+                    </button>
+                </div>
+                <div class="content">
+                    <button class="btn start">
+                        <i class="zwicon-play"></i>
+                        Start
+                    </button>
+                    <button class="btn pause hidden">
+                        <i class="zwicon-pause"></i>
+                        Pause
+                    </button>
+                </div>
+            </section>
+        </aside>
         <script type="module" src="js/app.js" async defer></script>
     </body>
 </html>

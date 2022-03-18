@@ -6,6 +6,30 @@
 :root {
     --body-background-color: #1f1e2e;
 
+    /* spacing */
+    --8pt-4: 4px;
+    --8pt-8: 8px;
+    --8pt-12: 12px;
+    --8pt-16: 16px;
+    --8pt-24: 24px;
+    --8pt-32: 32px;
+    --8pt-40: 40px;
+    --8pt-48: 48px;
+    --8pt-56: 56px;
+    --8pt-64: 64px;
+    --8pt-74: 72px;
+    --8pt-80: 80px;
+
+    /* ui */
+    --color-primary: #282125;
+    --color-secondary: #635460;
+    --color-light: #C2B7C0;
+    --transition: 200ms;
+
+    /* animation */
+    --duration: 350ms;
+    --timing-function: ease-in-out;
+
     /* clock */
     --clock-columns: 11;
     --clock-gap: 6px;
@@ -27,6 +51,24 @@
 }
 
 /*
+* Keyframes
+*/
+
+@keyframes showActionbar {
+    0% { right: -84px; }
+    25% { right: -94px; }
+    75% { right: var(--8pt-32); }
+    100% { right: var(--8pt-16); }
+}
+
+@keyframes hideActionbar {
+    0% { right: var(--8pt-16); }
+    25% { right: var(--8pt-32); }
+    75% { right: -94px; }
+    100% { right: -84px; }
+}
+
+/*
 * General
 */
 
@@ -34,6 +76,36 @@ body {
     background-color: var(--body-background-color);
     font-size: 16px;
     font-family: var(--letter-font-family);
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    width: var(--8pt-48);
+    height: var(--8pt-48);
+    padding: 0;
+    margin: 0;
+    color: var(--color-primary);
+    transition: var(--transition);
+    font-size: var(--8pt-16);
+    border-radius: var(--8pt-8);
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: var(--color-light);
+}
+
+.btn.bordered {
+    border: 1px solid var(--color-primary);
+}
+
+.btn.bordered:hover {
+    border: 1px solid var(--color-light);
 }
 
 /*
@@ -75,4 +147,65 @@ main {
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+/*
+* Action-bar
+*/
+
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: fixed;
+    bottom: var(--8pt-16);
+    animation: hideActionbar var(--duration) 1;
+    right: -84px;
+}
+
+.action-bar.visible {
+    animation: showActionbar var(--duration) 1;
+    right: var(--8pt-16);
+}
+
+.action-bar .content {
+    display: flex;
+    flex-direction: column;
+    padding: var(--8pt-12);
+    border-radius: 0 var(--8pt-8) var(--8pt-8) var(--8pt-8); 
+    background-color: #f7fafc;
+    gap: var(--8pt-8);
+}
+
+.action-bar .content .btn.hidden {
+    display: none;
+}
+
+.action-bar .activator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: var(--8pt-48);
+    border-radius: var(--8pt-8) 0 0 var(--8pt-8);
+    cursor: pointer;
+}
+.action-bar .activator .btn i {
+    transition: var(--duration);
+}
+.action-bar .activator .btn.visible i {
+    transform: rotate(180deg);
+}
+
+.action-bar .activator::after {
+    content: '';
+    position: relative;
+    bottom: -30px;
+    height: var(--8pt-12);
+    width: var(--8pt-12);
+    background: radial-gradient(circle at bottom left,rgba(0,0,0,0) calc(72% - 1px ), #fff var(--8pt-12));
+}
+
+.action-bar .activator .btn {
+    font-size: var(--8pt-32);
 }
